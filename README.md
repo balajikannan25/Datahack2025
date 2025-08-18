@@ -1,55 +1,88 @@
-README file:
+# Electronic Vehicle Health Check (eVHC) – AI-Powered Video Assessment
+
+## 📌 Project Overview
+
+This project is an **AI-driven electronic vehicle health check (eVHC)** system that automates vehicle inspection video assessments using **Google Vertex AI (Gemini-1.5-Flash-002)**.
+The solution replaces manual quality checks with **Generative AI–powered automation**, delivering faster, more accurate evaluations, structured insights, and score generation.
 
 ---
 
-# Project Overview
+## 🔎 Background
 
-This project is an electronic vehicle health check (eVHC) system that leverages Generative AI to automate vehicle inspection video assessments. The solution aims to deliver faster, more accurate evaluations and detailed score generation.
+Traditionally, in the **Dealer Incentive Program**, technicians recorded repair videos which were manually checked for quality before providing quotes. This process was:
 
----
+* Time-consuming
+* Prone to human errors
+* Difficult to scale
 
-## Background
-
-The "Video Check" system is an electronic vehicle health check (eVHC) solution. Technicians video-record necessary repairs and provide a quote. Traditionally, these videos were manually quality-checked as part of the Dealer Incentive program.
-
----
-
-## Approach
-
-The video assessment process now leverages Generative AI for automation. This approach delivers faster, more accurate evaluations and detailed score generation to streamline the review process.
+With this solution, video assessments are automated using **Generative AI**, making the process more **efficient, reliable, and scalable**.
 
 ---
 
-## Solution Overview
+## 🚀 Solution Overview
 
-### Product Features
+### ✨ Features
 
-- **AI-powered analysis**: Automated, AI-driven analysis of vehicle inspection and diagnostic videos.
-- **Streamlined insights**: Designed to streamline reviews, improve efficiency, and provide structured insights for the Dealer Incentive program.
-
----
-
-### Capabilities
-
-- **URL Extraction and Video Downloading**
-- **Video Type Classification**
-- **AI-Powered Content Analysis**
-  - Object Recognition
-  - Condition Assessment
-- **Speech-to-Text Transcription**
-- **Data Extraction and Validation**
-- **Error Handling and Logging**
-- **Summary Generation**
+* **AI-Powered Analysis** → Automated inspection and diagnostic video analysis
+* **Streamlined Insights** → Generates structured summaries and scores
+* **Automation at Scale** → Reduces manual review effort, improves turnaround time
 
 ---
 
-## Installation and Setup
+### 🔧 Capabilities
 
-### Prerequisites
+* **Video Management**
 
-1. Install Python (version 3.11 or higher).
-2. Install Docker if you plan to use the containerized setup.
-3. Clone the repository:
+  * URL extraction & video downloading
+  * Video type classification
+
+* **AI-Powered Content Analysis**
+
+  * Object recognition
+  * Vehicle condition assessment
+  * Speech-to-text transcription
+
+* **Data Handling**
+
+  * Data extraction & validation
+  * Integration with **Google BigQuery** & **Cloud Storage**
+  * Error handling & logging
+
+* **Results**
+
+  * Structured summary generation
+  * Insights for Dealer Incentive programs
+
+---
+
+## 📂 Project Structure
+
+```
+EVHC_gemini_local/
+│── controllers/
+│    ├── analyzing_video.py        # Analyze videos using Vertex AI LLM
+│    ├── data_from_bigquery.py     # Fetch data from BigQuery
+│    ├── delete_file.py            # Delete files from GCP bucket or BigQuery
+│    ├── get_files_from_bucket.py  # Fetch data from Cloud Storage
+│    ├── get_video_file_data.py    # Fetch video details from BigQuery
+│
+│── dist/                          # Frontend UI
+│── main.py                        # Main entry point
+│── requirements.txt               # Python dependencies
+│── Dockerfile                     # Container setup
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### ✅ Prerequisites
+
+1. **Python 3.10+**
+2. **Google Cloud SDK** (for authentication)
+3. **Docker** (if running containerized version)
+4. Clone the repository:
+
    ```bash
    git clone https://github.com/vignesh-ds/Datahack2025.git
    cd Datahack2025/EVHC_gemini_local
@@ -57,36 +90,65 @@ The video assessment process now leverages Generative AI for automation. This ap
 
 ---
 
-### Using Python (Non-Docker Setup)
+### 🔑 Authentication
+
+Before running the script, authenticate with Google Cloud:
+
+```bash
+gcloud auth application-default login
+```
+
+This allows access to:
+
+* **GCP Cloud Storage** (for video files)
+* **BigQuery** (for data storage & queries)
+* **Vertex AI** (for Generative AI model Gemini-1.5-Flash-002)
+
+---
+
+### ▶️ Running with Python (Non-Docker Setup)
 
 1. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
-
 2. Run the main script:
+
    ```bash
    python main.py
    ```
 
 ---
 
-### Using Docker (Containerized Setup)
+### 🐳 Running with Docker
 
 1. Build the Docker image:
+
    ```bash
    docker build -t evhc_gemini_local .
    ```
+2. Run the container:
 
-2. Run the Docker container:
    ```bash
    docker run -d -p 8080:8080 evhc_gemini_local
    ```
 
 ---
 
-## Running the Application
+## 🏃 Running the Application
 
-1. **Input Data**: Provide the necessary video URLs for analysis.
-2. **Execution**: The system will automatically process the videos, perform classifications, extract data, and generate a summary.
-3. **Output**: Review the structured insights and results generated by the system.
+1. **Provide Input** → Supply video URLs for processing
+2. **Execution** → System automatically downloads, analyzes, classifies, and extracts data
+3. **Output** → Review structured insights, scores, and summaries
+
+---
+
+## 🔗 Tech Stack
+
+* **Google Vertex AI (Gemini-1.5-Flash-002)** → Generative AI model for analysis
+* **Google BigQuery** → Data storage & querying
+* **Google Cloud Storage** → Video storage
+* **Python 3.10+** → Core development
+* **Docker** → Containerization
+* **FastAPI (optional for API layer)**
