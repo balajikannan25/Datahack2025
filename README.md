@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project is an **AI-driven electronic vehicle health check (eVHC)** system that automates vehicle inspection video assessments using **Google Vertex AI (Gemini-1.5-Flash-002)**.
+This project is an **AI-driven electronic vehicle health check (eVHC)** system that automates vehicle inspection video assessments using **Google Vertex AI (gemini-2.5-pro)**.
 The solution replaces manual quality checks with **Generative AI–powered automation**, delivering faster, more accurate evaluations, structured insights, and score generation.
 
 ---
@@ -102,7 +102,7 @@ This allows access to:
 
 * **GCP Cloud Storage** (for video files)
 * **BigQuery** (for data storage & queries)
-* **Vertex AI** (for Generative AI model Gemini-1.5-Flash-002)
+* **Vertex AI** (for Generative AI model gemini-2.5-pro)
 
 ---
 
@@ -146,7 +146,7 @@ This allows access to:
 
 ## 🔗 Tech Stack
 
-* **Google Vertex AI (Gemini-1.5-Flash-002)** → Generative AI model for analysis
+* **Google Vertex AI (gemini-2.5-pro)** → Generative AI model for analysis
 * **Google BigQuery** → Data storage & querying
 * **Google Cloud Storage** → Video storage
 * **Python 3.10+** → Core development
